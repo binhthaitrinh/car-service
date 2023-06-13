@@ -11,9 +11,88 @@ import image6 from '../images/showcase/image-6.jpg';
 import image7 from '../images/showcase/image-7.jpg';
 import image8 from '../images/showcase/image-8.jpg';
 import { Image } from '@astrojs/image/components';
+
+const navLinks = [
+  {
+    title: 'Trang chủ',
+    href: '/',
+  },
+  {
+    title: 'Dịch vụ',
+    href: '/#services',
+  },
+  {
+    title: 'Phản hồi',
+    href: '/#testimonials',
+  },
+  {
+    title: 'Hình ảnh',
+    href: '/#galery',
+  },
+  {
+    title: 'Liên hệ',
+    href: '/#contact',
+  },
+];
+
+const testimonials = [
+  {
+    name: 'TRẦN NGỌC QUYÊN',
+    review:
+      'Lái xe nhiệt tình thân thiện. Tổng đài hỗ trợ nhiệt tình, xe rất mới chạy rất cẩn thận và không bị say xe như xe khách Cảm ơn.',
+    rating: 5,
+  },
+  {
+    name: 'Hà Liêm',
+    review:
+      'Tài xế thân thiện, nhiệt tình và đúng giờ. Đã đi rất nhiều chuyến của xe ghép 300 và cảm thấy hài lòng.',
+    rating: 5,
+  },
+  {
+    name: 'Nguyễn Trung Thành',
+    review:
+      'Tài xế rất tốt bụng và thân thiện, phục vụ rất tuyệt vời. Chất lượng xe rất tốt. Rất xứng đáng với số tiền bỏ ra cho chuyến đi. Tuyệt vời.',
+    rating: 5,
+  },
+];
+
+const galery = [
+  {
+    src: image1,
+    alt: 'abc',
+  },
+  {
+    src: image2,
+    alt: 'abc',
+  },
+  {
+    src: image3,
+    alt: 'abc',
+  },
+  {
+    src: image4,
+    alt: 'abc',
+  },
+  {
+    src: image5,
+    alt: 'abc',
+  },
+  {
+    src: image6,
+    alt: 'abc',
+  },
+  {
+    src: image7,
+    alt: 'abc',
+  },
+  {
+    src: image8,
+    alt: 'abc',
+  },
+];
 ---
 
-<html lang='en'>
+<html lang='en' class='scroll-smooth'>
   <head>
     <meta charset='utf-8' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
@@ -23,9 +102,9 @@ import { Image } from '@astrojs/image/components';
   </head>
   <body class='text-gray-700'>
     <div
-      class='md:h-90-vh bg-[url("/hero-bg.jpg")] relative pt-28 md:pt-0 pb-16 md:pd-0'
+      class='lg:h-90-vh bg-[url("/hero-bg.jpg")] relative pt-28 lg:pt-0 pb-16 lg:pb-0'
     >
-      <div class='bg-white fixed top-0 left-0 w-full z-50'>
+      <div class='bg-white fixed top-0 left-0 w-full z-50 shadow-sm'>
         <div
           class='absolute top-7 left-8 cursor-pointer block md:hidden'
           id='burger'
@@ -35,7 +114,7 @@ import { Image } from '@astrojs/image/components';
           <div class='w-8 h-1 bg-black'></div>
         </div>
         <div
-          class='px-4 md:px-0 md:container mx-auto flex md:justify-between md:flex-row md:items-center py-6 flex-col items-end'
+          class='px-4 md:container mx-auto flex md:justify-between md:flex-row md:items-center py-6 flex-col items-end'
         >
           <a href='/'>
             <h1 class='text-xl font-bold text-blue-600'>Some Logo</h1>
@@ -44,31 +123,13 @@ import { Image } from '@astrojs/image/components';
             <ul
               class='flex md:flex-row md:items-center justify-center md:space-x-10 flex-col items-end mt-6 md:mt-0 space-y-2 md:space-y-0'
             >
-              <li
-                class='hover:text-blue-600 transition-all ease-out duration-500'
-              >
-                <a href='/'>Trang chủ</a>
-              </li>
-              <li
-                class='hover:text-blue-600 transition-all ease-out duration-500'
-              >
-                <a href='/'>Giới thiệu</a>
-              </li>
-              <li
-                class='hover:text-blue-600 transition-all ease-out duration-500'
-              >
-                <a href='/'>Phản hồi</a>
-              </li>
-              <li
-                class='hover:text-blue-600 transition-all ease-out duration-500'
-              >
-                <a href='/'>Hình ảnh</a>
-              </li>
-              <li
-                class='hover:text-blue-600 transition-all ease-out duration-500'
-              >
-                <a href='/'>Liên hệ</a>
-              </li>
+              {
+                navLinks.map(({ title, href }) => (
+                  <li class='hover:text-blue-600 transition-all ease-out duration-500'>
+                    <a href={href}>{title}</a>
+                  </li>
+                ))
+              }
             </ul>
           </nav>
           <div></div>
@@ -76,17 +137,18 @@ import { Image } from '@astrojs/image/components';
       </div>
 
       <div
-        class='md:absolute relative md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 w-full grid md:grid-cols-5 container mx-auto md:px-16 md:gap-20 gap-12 grid-cols-1'
+        class='lg:absolute px-2 relative lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 w-full grid lg:grid-cols-6 container mx-auto gap-12 grid-cols-1'
       >
-        <!-- <div class='container mx-auto grid md:grid-cols-2 gap-16'> -->
-        <div class='container mx-auto flex gap-16 md:col-span-3'>
-          <div
-            class='md:col-span-1 flex-1 flex flex-col justify-center md:pl-16'
-          >
-            <h2 class='text-blue-500 md:text-6xl text-5xl font-semibold'>
+        <div class='container mx-auto flex gap-16 lg:col-span-3'>
+          <div class='md:col-span-1 flex-1 flex flex-col justify-center'>
+            <h2
+              class='text-blue-500 md:text-5xl text-4xl lg:text-6xl font-semibold'
+            >
               Thoải mái như xe nhà
             </h2>
-            <h2 class='text-blue-500 md:text-6xl text-5xl font-semibold'>
+            <h2
+              class='text-blue-500 md:text-5xl text-4xl lg:text-6xl font-semibold'
+            >
               Giá rẻ như xe khách
             </h2>
             <p class='mt-4'>
@@ -94,7 +156,7 @@ import { Image } from '@astrojs/image/components';
               the 1500s, when an unknown printer took a galley of type and
               scrambled it to make a type specimen book.
             </p>
-            <form class='rounded-lg bg-white px-8 py-12 mt-4'>
+            <!-- <form class='rounded-lg bg-white px-8 py-12 mt-4'>
               <div class='mb-3'>
                 <input
                   class='border-solid border-1 border-gray-300 rounded-sm py-1 pl-2 mt-1 w-full'
@@ -138,12 +200,12 @@ import { Image } from '@astrojs/image/components';
                 class='block w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-400 transition-all ease-out duration-500'
                 >Nhận báo giá</button
               >
-            </form>
+            </form> -->
           </div>
         </div>
-        <div class='md:col-span-2'>
+        <div class='lg:col-span-3 md:px-12 lg:px-0'>
           <Image
-            class='rounded-lg h-full object-cover'
+            class='rounded-lg lg:h-full object-cover md:w-full md:h-128'
             src={heroImage}
             alt='asd'
           />
@@ -151,14 +213,14 @@ import { Image } from '@astrojs/image/components';
       </div>
     </div>
 
-    <section class='py-20 md:py-44'>
+    <section class='py-20 lg:py-44 px-2' id='services'>
       <div class='container mx-auto'>
-        <h3 class='mb-16 md:mb-32 text-6xl text-blue-500 text-center'>
+        <h3 class='mb-16 lg:mb-32 text-6xl text-blue-500 text-center'>
           Dịch vụ của chúng tôi
         </h3>
         <!-- <div class='grid grid-cols-2 gap-16'> -->
         <div
-          class='flex md:gap-24 gap-12 flex-col md:flex-row bg-slate-100 md:bg-white rounded-lg'
+          class='flex lg:gap-24 gap-12 flex-col md:flex-row bg-slate-100 md:bg-white rounded-lg'
         >
           <div
             class='flex-1 flex flex-col justify-center items-start p-12 pb-0 md:p-0'
@@ -191,7 +253,7 @@ import { Image } from '@astrojs/image/components';
         </div>
 
         <div
-          class='flex md:gap-24 gap-12 md:mt-36 mt-12 flex-col md:flex-row-reverse bg-slate-100 md:bg-white rounded-lg'
+          class='flex lg:gap-24 gap-12 lg:mt-36 mt-12 flex-col md:flex-row-reverse bg-slate-100 md:bg-white rounded-lg'
         >
           <div
             class='flex-1 flex flex-col justify-center items-start p-12 pb-0 md:p-0'
@@ -201,7 +263,7 @@ import { Image } from '@astrojs/image/components';
             </p>
             <p class='text-6xl font-bold mb-4 mt-2'>Chỗ ngồi thoải mái</p>
             <div class='bg-blue-500 text-white px-4 py-2 rounded-md mb-6'>
-              <p>Xe ghép Door to Door:</p>
+              <p>Xe ghép Door to Door</p>
             </div>
 
             <ul class='list-disc'>
@@ -227,328 +289,64 @@ import { Image } from '@astrojs/image/components';
       </div>
     </section>
 
-    <section class='py-20 md:py-44 bg-gray-100'>
+    <section class='py-20 lg:py-44 bg-gray-100 px-2' id='testimonials'>
       <div class='container mx-auto'>
         <h4 class='text-blue-500 text-xl'>Phản hồi</h4>
         <h3 class='text-6xl font-semibold'>
           Khách hàng nói gì <br />về chúng tôi
         </h3>
 
-        <div class='grid md:grid-cols-3 grid-cols-1 gap-12 mt-16'>
-          <div class='col-span-1 bg-white px-16 py-12 text-center rounded-lg'>
-            <div class='flex items-center justify-center mb-3'>
-              <svg
-                class='w-5 fill-green-500'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                xmlns='http://www.w3.org/2000/svg'
-                aria-hidden='true'
-              >
-                <path
-                  clip-rule='evenodd'
-                  fill-rule='evenodd'
-                  d='M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z'
-                ></path>
-              </svg>
-              <svg
-                class='w-5 fill-green-500'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                xmlns='http://www.w3.org/2000/svg'
-                aria-hidden='true'
-              >
-                <path
-                  clip-rule='evenodd'
-                  fill-rule='evenodd'
-                  d='M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z'
-                ></path>
-              </svg>
-              <svg
-                class='w-5 fill-green-500'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                xmlns='http://www.w3.org/2000/svg'
-                aria-hidden='true'
-              >
-                <path
-                  clip-rule='evenodd'
-                  fill-rule='evenodd'
-                  d='M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z'
-                ></path>
-              </svg>
-              <svg
-                class='w-5 fill-green-500'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                xmlns='http://www.w3.org/2000/svg'
-                aria-hidden='true'
-              >
-                <path
-                  clip-rule='evenodd'
-                  fill-rule='evenodd'
-                  d='M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z'
-                ></path>
-              </svg>
-              <svg
-                class='w-5 fill-green-500'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                xmlns='http://www.w3.org/2000/svg'
-                aria-hidden='true'
-              >
-                <path
-                  clip-rule='evenodd'
-                  fill-rule='evenodd'
-                  d='M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z'
-                ></path>
-              </svg>
-            </div>
-
-            <p>
-              Lái xe nhiệt tình thân thiện. Tổng đài hỗ trợ nhiệt tình, xe rất
-              mới chạy rất cẩn thận và không bị say xe như xe khách Cảm ơn.
-            </p>
-            <p class='text-bold uppercase mt-4 font-bold'>TRẦN NGỌC QUYÊN</p>
-          </div>
-
-          <div class='col-span-1 bg-white px-16 py-12 text-center rounded-lg'>
-            <div class='flex items-center justify-center mb-3'>
-              <svg
-                class='w-5 fill-green-500'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                xmlns='http://www.w3.org/2000/svg'
-                aria-hidden='true'
-              >
-                <path
-                  clip-rule='evenodd'
-                  fill-rule='evenodd'
-                  d='M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z'
-                ></path>
-              </svg>
-              <svg
-                class='w-5 fill-green-500'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                xmlns='http://www.w3.org/2000/svg'
-                aria-hidden='true'
-              >
-                <path
-                  clip-rule='evenodd'
-                  fill-rule='evenodd'
-                  d='M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z'
-                ></path>
-              </svg>
-              <svg
-                class='w-5 fill-green-500'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                xmlns='http://www.w3.org/2000/svg'
-                aria-hidden='true'
-              >
-                <path
-                  clip-rule='evenodd'
-                  fill-rule='evenodd'
-                  d='M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z'
-                ></path>
-              </svg>
-              <svg
-                class='w-5 fill-green-500'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                xmlns='http://www.w3.org/2000/svg'
-                aria-hidden='true'
-              >
-                <path
-                  clip-rule='evenodd'
-                  fill-rule='evenodd'
-                  d='M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z'
-                ></path>
-              </svg>
-              <svg
-                class='w-5 fill-green-500'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                xmlns='http://www.w3.org/2000/svg'
-                aria-hidden='true'
-              >
-                <path
-                  clip-rule='evenodd'
-                  fill-rule='evenodd'
-                  d='M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z'
-                ></path>
-              </svg>
-            </div>
-
-            <p>
-              Lái xe nhiệt tình thân thiện. Tổng đài hỗ trợ nhiệt tình, xe rất
-              mới chạy rất cẩn thận và không bị say xe như xe khách Cảm ơn.
-            </p>
-            <p class='text-bold uppercase mt-4 font-bold'>TRẦN NGỌC QUYÊN</p>
-          </div>
-
-          <div class='col-span-1 bg-white px-16 py-12 text-center rounded-lg'>
-            <div class='flex items-center justify-center mb-3'>
-              <svg
-                class='w-5 fill-green-500'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                xmlns='http://www.w3.org/2000/svg'
-                aria-hidden='true'
-              >
-                <path
-                  clip-rule='evenodd'
-                  fill-rule='evenodd'
-                  d='M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z'
-                ></path>
-              </svg>
-              <svg
-                class='w-5 fill-green-500'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                xmlns='http://www.w3.org/2000/svg'
-                aria-hidden='true'
-              >
-                <path
-                  clip-rule='evenodd'
-                  fill-rule='evenodd'
-                  d='M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z'
-                ></path>
-              </svg>
-              <svg
-                class='w-5 fill-green-500'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                xmlns='http://www.w3.org/2000/svg'
-                aria-hidden='true'
-              >
-                <path
-                  clip-rule='evenodd'
-                  fill-rule='evenodd'
-                  d='M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z'
-                ></path>
-              </svg>
-              <svg
-                class='w-5 fill-green-500'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                xmlns='http://www.w3.org/2000/svg'
-                aria-hidden='true'
-              >
-                <path
-                  clip-rule='evenodd'
-                  fill-rule='evenodd'
-                  d='M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z'
-                ></path>
-              </svg>
-              <svg
-                class='w-5 fill-green-500'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                xmlns='http://www.w3.org/2000/svg'
-                aria-hidden='true'
-              >
-                <path
-                  clip-rule='evenodd'
-                  fill-rule='evenodd'
-                  d='M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z'
-                ></path>
-              </svg>
-            </div>
-
-            <p>
-              Lái xe nhiệt tình thân thiện. Tổng đài hỗ trợ nhiệt tình, xe rất
-              mới chạy rất cẩn thận và không bị say xe như xe khách Cảm ơn.
-            </p>
-            <p class='text-bold uppercase mt-4 font-bold'>TRẦN NGỌC QUYÊN</p>
-          </div>
+        <div class='grid md:grid-cols-3 grid-cols-1 lg:gap-12 gap-6 mt-16'>
+          {
+            testimonials.map(({ name, review, rating }) => (
+              <div class='col-span-1 bg-white lg:px-16 px-6 lg:py-12 py-8 text-center rounded-lg'>
+                <div class='flex items-center justify-center mb-3'>
+                  {Array.from({ length: rating }).map(() => (
+                    <svg
+                      class='w-5 fill-green-500'
+                      fill='currentColor'
+                      viewBox='0 0 20 20'
+                      xmlns='http://www.w3.org/2000/svg'
+                      aria-hidden='true'
+                    >
+                      <path
+                        clip-rule='evenodd'
+                        fill-rule='evenodd'
+                        d='M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z'
+                      />
+                    </svg>
+                  ))}
+                </div>
+                <p>{review}</p>
+                <p class='text-bold uppercase mt-4 font-bold'>{name}</p>
+              </div>
+            ))
+          }
         </div>
       </div>
     </section>
 
     <section>
-      <ul class='w-full flex flex-wrap bg-blue-300'>
-        <li class='w-1/2 md:w-1/4 overflow-hidden'>
-          <figure>
-            <Image
-              src={image1}
-              class='h-72 md:h-128 object-cover opacity-70 scale-110 hover:scale-100 hover:opacity-100 transition-all ease-out duration-500'
-              alt='abnsdsad'
-            />
-          </figure>
-        </li>
-        <li class='w-1/2 md:w-1/4 overflow-hidden'>
-          <figure>
-            <Image
-              src={image2}
-              class='h-72 md:h-128 object-cover opacity-70 scale-110 hover:scale-100 hover:opacity-100 transition-all ease-out duration-500'
-              alt='abnsdsad'
-            />
-          </figure>
-        </li>
-        <li class='w-1/2 md:w-1/4 overflow-hidden'>
-          <figure>
-            <Image
-              src={image3}
-              class='h-72 md:h-128 object-cover opacity-70 scale-110 hover:scale-100 hover:opacity-100 transition-all ease-out duration-500'
-              alt='abnsdsad'
-            />
-          </figure>
-        </li>
-        <li class='w-1/2 md:w-1/4 overflow-hidden'>
-          <figure>
-            <Image
-              src={image4}
-              class='h-72 md:h-128 object-cover opacity-70 scale-110 hover:scale-100 hover:opacity-100 transition-all ease-out duration-500'
-              alt='abnsdsad'
-            />
-          </figure>
-        </li>
-      </ul>
-
-      <ul class='w-full flex flex-wrap bg-blue-300'>
-        <li class='w-1/2 md:w-1/4 overflow-hidden'>
-          <figure>
-            <Image
-              src={image5}
-              class='h-72 md:h-128 object-cover opacity-70 scale-110 hover:scale-100 hover:opacity-100 transition-all ease-out duration-500'
-              alt='abnsdsad'
-            />
-          </figure>
-        </li>
-        <li class='w-1/2 md:w-1/4 overflow-hidden'>
-          <figure>
-            <Image
-              src={image6}
-              class='h-72 md:h-128 object-cover opacity-70 scale-110 hover:scale-100 hover:opacity-100 transition-all ease-out duration-500'
-              alt='abnsdsad'
-            />
-          </figure>
-        </li>
-        <li class='w-1/2 md:w-1/4 overflow-hidden'>
-          <figure>
-            <Image
-              src={image7}
-              class='h-72 md:h-128 object-cover opacity-70 scale-110 hover:scale-100 hover:opacity-100 transition-all ease-out duration-500'
-              alt='abnsdsad'
-            />
-          </figure>
-        </li>
-        <li class='w-1/2 md:w-1/4 overflow-hidden'>
-          <figure>
-            <Image
-              src={image8}
-              class='h-72 md:h-128 object-cover opacity-70 scale-110 hover:scale-100 hover:opacity-100 transition-all ease-out duration-500'
-              alt='abnsdsad'
-            />
-          </figure>
-        </li>
+      <ul class='w-full flex flex-wrap bg-blue-300' id='galery'>
+        {
+          galery.map(({ src, alt }) => (
+            <li class='w-1/2 lg:w-1/4 overflow-hidden'>
+              <figure>
+                <Image
+                  src={src}
+                  class='h-72 md:h-128 object-cover opacity-70 scale-110 hover:scale-100 hover:opacity-100 transition-all ease-out duration-500'
+                  alt={alt}
+                />
+              </figure>
+            </li>
+          ))
+        }
       </ul>
     </section>
 
     <footer class='bg-blue-500 text-white py-10 text-center'>
       <div class='container mx-auto'>
-        Copyright © 2023 by abc. All rights reserved.
+        Copyright © 2023 by Kyle Trinh. All rights reserved.
       </div>
     </footer>
 
