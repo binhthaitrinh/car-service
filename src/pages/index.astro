@@ -10,6 +10,9 @@ import image5 from '../images/showcase/image-5.jpg';
 import image6 from '../images/showcase/image-6.jpg';
 import image7 from '../images/showcase/image-7.jpg';
 import image8 from '../images/showcase/image-8.jpg';
+import logo from '../images/logo.png';
+import phoneLogo from '../images/phone.png';
+import zaloLogo from '../images/zalo.png';
 import { Image } from '@astrojs/image/components';
 
 const navLinks = [
@@ -28,10 +31,6 @@ const navLinks = [
   {
     title: 'Hình ảnh',
     href: '/#galery',
-  },
-  {
-    title: 'Liên hệ',
-    href: '/#contact',
   },
 ];
 
@@ -90,17 +89,49 @@ const galery = [
     alt: 'abc',
   },
 ];
+
+const phoneNumber = '0913329111';
+const zalo = '0398428829';
 ---
 
 <html lang='en' class='scroll-smooth'>
   <head>
     <meta charset='utf-8' />
-    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <link rel='icon' type='image/svg+xml' href='/favicon-main.svg' />
     <meta name='viewport' content='width=device-width' />
     <meta name='generator' content={Astro.generator} />
     <title>Astro</title>
   </head>
   <body class='text-gray-700'>
+    <div
+      class='fixed bottom-6 right-6 lg:bottom-10 lg:right-10 z-[100] flex flex-col justify-end items-end space-y-5'
+    >
+      <a href={`https://zalo.me/${zalo}`} class='relative'>
+        <div
+          class='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
+        >
+          <div class='w-12 h-12 bg-blue-400 animate-ping rounded-full'></div>
+        </div>
+        <div
+          class='bg-blue-500 rounded-full p-3 animate-[wiggle_1s_ease-in-out_infinite]'
+        >
+          <Image src={zaloLogo} alt='asd' class='w-8' />
+        </div>
+      </a>
+      <a href={`tel:${phoneNumber}`} class='relative'>
+        <div
+          class='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
+        >
+          <div class='w-12 h-12 bg-red-400 animate-ping rounded-full'></div>
+        </div>
+        <div
+          class='bg-red-500 rounded-full p-3 animate-[wiggle_1s_ease-in-out_infinite]'
+        >
+          <Image src={phoneLogo} alt='asd' class='w-8' />
+        </div>
+      </a>
+    </div>
+
     <div
       class='lg:h-90-vh bg-[url("/hero-bg.jpg")] relative pt-28 lg:pt-0 pb-16 lg:pb-0'
     >
@@ -114,10 +145,16 @@ const galery = [
           <div class='w-8 h-1 bg-black'></div>
         </div>
         <div
-          class='px-4 md:container mx-auto flex md:justify-between md:flex-row md:items-center py-6 flex-col items-end'
+          class='px-4 md:container mx-auto flex md:justify-between md:flex-row md:items-center py-2 flex-col items-end'
         >
           <a href='/'>
-            <h1 class='text-xl font-bold text-blue-600'>Some Logo</h1>
+            <Image
+              src={logo}
+              alt='asd'
+              format={'webp'}
+              width={75}
+              fit='cover'
+            />
           </a>
           <nav class='md:block hidden' id='menu'>
             <ul
@@ -132,30 +169,58 @@ const galery = [
               }
             </ul>
           </nav>
-          <div></div>
+          <a
+            class='hidden md:flex justify-center items-end'
+            href={`tel:${phoneNumber}`}
+          >
+            <span
+              ><svg
+                fill='currentColor'
+                viewBox='0 0 20 20'
+                xmlns='http://www.w3.org/2000/svg'
+                aria-hidden='true'
+                class='w-6 mr-2'
+              >
+                <path
+                  clip-rule='evenodd'
+                  fill-rule='evenodd'
+                  d='M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z'
+                ></path>
+              </svg></span
+            >
+            <span>{phoneNumber}</span>
+          </a>
         </div>
       </div>
 
       <div
         class='lg:absolute px-2 relative lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 w-full grid lg:grid-cols-6 container mx-auto gap-12 grid-cols-1'
       >
-        <div class='container mx-auto flex gap-16 lg:col-span-3'>
-          <div class='md:col-span-1 flex-1 flex flex-col justify-center'>
+        <div class='md:px-12 flex gap-16 lg:col-span-3'>
+          <div
+            class='md:col-span-1 flex-1 flex flex-col justify-center items-start'
+          >
             <h2
-              class='text-blue-500 md:text-5xl text-4xl lg:text-6xl font-semibold'
+              class='text-blue-500 md:text-5xl text-4xl lg:text-7xl font-semibold'
             >
               Thoải mái như xe nhà
             </h2>
             <h2
-              class='text-blue-500 md:text-5xl text-4xl lg:text-6xl font-semibold'
+              class='text-blue-500 md:text-5xl text-4xl lg:text-7xl font-semibold'
             >
               Giá rẻ như xe khách
             </h2>
-            <p class='mt-4'>
-              Lorem Ipsum has been the industry's standard dummy text ever since
-              the 1500s, when an unknown printer took a galley of type and
-              scrambled it to make a type specimen book.
+            <p class='mt-4 bg-blue-500 text-white rounded-md px-2 py-2 text-lg'>
+              Xe Ghép - Xe Tiện Chuyến
             </p>
+            <ul
+              class='pl-6 mt-3 list-image-[url(checkmark.svg)] text-lg list-inside space-y-1'
+            >
+              <li>Hà Nội</li>
+              <li>Hải Phòng</li>
+              <li>Quảng Ninh</li>
+              <li>và các tỉnh...</li>
+            </ul>
             <!-- <form class='rounded-lg bg-white px-8 py-12 mt-4'>
               <div class='mb-3'>
                 <input
