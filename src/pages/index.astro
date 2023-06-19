@@ -13,7 +13,7 @@ import image8 from '../images/showcase/image-8.jpg';
 import logo from '../images/logo.png';
 import phoneLogo from '../images/phone.png';
 import zaloLogo from '../images/zalo.png';
-import { Image } from '@astrojs/image/components';
+import { Image, Picture } from '@astrojs/image/components';
 
 const navLinks = [
   {
@@ -150,10 +150,9 @@ const zalo = '0398428829';
           <a href='/'>
             <Image
               src={logo}
-              alt='asd'
+              alt='Vận tải Gia Huy logo'
               format={'webp'}
               width={75}
-              fit='cover'
             />
           </a>
           <nav class='md:block hidden' id='menu'>
@@ -269,153 +268,166 @@ const zalo = '0398428829';
           </div>
         </div>
         <div class='lg:col-span-4 md:px-12 lg:px-0'>
-          <Image
+          <Picture
+            class='rounded-lg lg:h-full object-cover md:w-full md:h-128'
+            src={heroImage}
+            alt='Ảnh xe mẫu Mitsubishi'
+            format='webp'
+            sizes='(min-width: 640px) 375px, (min-width: 768px) 800px'
+            widths={[375, 800]}
+          />
+          <!-- <Image
             class='rounded-lg lg:h-full object-cover md:w-full md:h-128'
             src={heroImage}
             alt='asd'
             format={'webp'}
             width={700}
-          />
+          /> -->
         </div>
       </div>
     </div>
 
-    <section class='py-20 lg:py-44 px-2' id='services'>
-      <div class='container mx-auto'>
-        <h3 class='mb-16 lg:mb-32 text-6xl text-blue-500 text-center'>
-          Dịch vụ của chúng tôi
-        </h3>
-        <!-- <div class='grid grid-cols-2 gap-16'> -->
-        <div
-          class='flex lg:gap-24 gap-12 flex-col md:flex-row bg-slate-100 md:bg-white rounded-lg'
-        >
+    <main>
+      <section class='py-20 lg:py-44 px-2' id='services'>
+        <div class='container mx-auto'>
+          <h3 class='mb-16 lg:mb-32 text-6xl text-blue-500 text-center'>
+            Dịch vụ của chúng tôi
+          </h3>
+          <!-- <div class='grid grid-cols-2 gap-16'> -->
           <div
-            class='flex-1 flex flex-col justify-center items-start p-12 pb-0 md:p-0'
+            class='flex lg:gap-24 gap-12 flex-col md:flex-row bg-slate-100 md:bg-white rounded-lg'
           >
-            <p class='text-blue-500 font-semibold text-xl'>Chỉ từ</p>
-            <p class='text-6xl font-bold mb-4 mt-2'>6,000 VND / km</p>
-            <div class='bg-blue-500 text-white px-4 py-2 rounded-md mb-6'>
-              <p>Xe tiện chuyến Door to Door</p>
-            </div>
-
-            <ul class='list-disc'>
-              <li>
-                Với đội xe 30 chiếc đời mới cùng liên kết 1.964 xe trên toàn
-                miền bắc, chúng tôi luôn bảo đảm các xe có khách đi 2 chiều, từ
-                đó giảm giá cước đáng kể cho Quý khách nếu chỉ đi 1 chiều.
-              </li>
-              <li>
-                Nếu đi 2 chiều, chúng tôi sẽ có giá đặc biệt tốt với Quý khách
-                chỉ từ 6.000đ/Km
-              </li>
-            </ul>
-          </div>
-          <div class='flex-1'>
-            <Image
-              class='h-128 w-full object-cover rounded-xl'
-              src={service1Image}
-              alt='qwe'
-              format={'webp'}
-              width={700}
-            />
-          </div>
-        </div>
-
-        <div
-          class='flex lg:gap-24 gap-12 lg:mt-36 mt-12 flex-col md:flex-row-reverse bg-slate-100 md:bg-white rounded-lg'
-        >
-          <div
-            class='flex-1 flex flex-col justify-center items-start p-12 pb-0 md:p-0'
-          >
-            <p class='text-blue-500 font-semibold text-xl'>
-              Cam kết không nhồi nhét khách
-            </p>
-            <p class='text-6xl font-bold mb-4 mt-2'>Chỗ ngồi thoải mái</p>
-            <div class='bg-blue-500 text-white px-4 py-2 rounded-md mb-6'>
-              <p>Xe ghép Door to Door</p>
-            </div>
-
-            <ul class='list-disc'>
-              <li>
-                Thay vì phải di duyển từ nhà ra bến xe và từ bến xe về nhà, xe
-                ghép sẽ đưa đón Quý khách tận nhà.
-              </li>
-              <li>
-                Để đảm bảo chuyến đi được thoải mái, vì chất lượng phục vụ;
-                chúng tôi cam kết chỉ ghép tối đa xe 5 chỗ 3 khách và xe 7 chỗ
-                là 4 khách.
-              </li>
-            </ul>
-          </div>
-          <div class='flex-1'>
-            <Image
-              class='h-128 w-full object-cover rounded-xl'
-              src={service2Image}
-              alt='qwe'
-              format={'webp'}
-              width={700}
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class='py-20 lg:py-44 bg-gray-100 px-2' id='testimonials'>
-      <div class='container mx-auto'>
-        <h4 class='text-blue-500 text-xl'>Phản hồi</h4>
-        <h3 class='text-6xl font-semibold'>
-          Khách hàng nói gì <br />về chúng tôi
-        </h3>
-
-        <div class='grid md:grid-cols-3 grid-cols-1 lg:gap-12 gap-6 mt-16'>
-          {
-            testimonials.map(({ name, review, rating }) => (
-              <div class='col-span-1 bg-white lg:px-16 px-6 lg:py-12 py-8 text-center rounded-lg'>
-                <div class='flex items-center justify-center mb-3'>
-                  {Array.from({ length: rating }).map(() => (
-                    <svg
-                      class='w-5 fill-green-500'
-                      fill='currentColor'
-                      viewBox='0 0 20 20'
-                      xmlns='http://www.w3.org/2000/svg'
-                      aria-hidden='true'
-                    >
-                      <path
-                        clip-rule='evenodd'
-                        fill-rule='evenodd'
-                        d='M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z'
-                      />
-                    </svg>
-                  ))}
-                </div>
-                <p>{review}</p>
-                <p class='text-bold uppercase mt-4 font-bold'>{name}</p>
+            <div
+              class='flex-1 flex flex-col justify-center items-start p-12 pb-0 md:p-0'
+            >
+              <p class='text-blue-500 font-semibold text-xl'>Chỉ từ</p>
+              <p class='text-6xl font-bold mb-4 mt-2'>6,000 VND / km</p>
+              <div class='bg-blue-500 text-white px-4 py-2 rounded-md mb-6'>
+                <p>Xe tiện chuyến Door to Door</p>
               </div>
+
+              <ul class='list-disc'>
+                <li>
+                  Với đội xe 30 chiếc đời mới cùng liên kết 1.964 xe trên toàn
+                  miền bắc, chúng tôi luôn bảo đảm các xe có khách đi 2 chiều,
+                  từ đó giảm giá cước đáng kể cho Quý khách nếu chỉ đi 1 chiều.
+                </li>
+                <li>
+                  Nếu đi 2 chiều, chúng tôi sẽ có giá đặc biệt tốt với Quý khách
+                  chỉ từ 6.000đ/Km
+                </li>
+              </ul>
+            </div>
+            <div class='flex-1'>
+              <Picture
+                class='h-128 w-full object-cover rounded-xl'
+                src={service1Image}
+                alt='Ảnh đội xe Toyota'
+                format={'webp'}
+                sizes='(min-width: 640px) 375px, (min-width: 768px) 800px'
+                widths={[375, 800]}
+              />
+            </div>
+          </div>
+
+          <div
+            class='flex lg:gap-24 gap-12 lg:mt-36 mt-12 flex-col md:flex-row-reverse bg-slate-100 md:bg-white rounded-lg'
+          >
+            <div
+              class='flex-1 flex flex-col justify-center items-start p-12 pb-0 md:p-0'
+            >
+              <p class='text-blue-500 font-semibold text-xl'>
+                Cam kết không nhồi nhét khách
+              </p>
+              <p class='text-6xl font-bold mb-4 mt-2'>Chỗ ngồi thoải mái</p>
+              <div class='bg-blue-500 text-white px-4 py-2 rounded-md mb-6'>
+                <p>Xe ghép Door to Door</p>
+              </div>
+
+              <ul class='list-disc'>
+                <li>
+                  Thay vì phải di duyển từ nhà ra bến xe và từ bến xe về nhà, xe
+                  ghép sẽ đưa đón Quý khách tận nhà.
+                </li>
+                <li>
+                  Để đảm bảo chuyến đi được thoải mái, vì chất lượng phục vụ;
+                  chúng tôi cam kết chỉ ghép tối đa xe 5 chỗ 3 khách và xe 7 chỗ
+                  là 4 khách.
+                </li>
+              </ul>
+            </div>
+            <div class='flex-1'>
+              <Picture
+                class='h-128 w-full object-cover rounded-xl'
+                src={service2Image}
+                alt='Ảnh đội xe Mitsubishi'
+                format='webp'
+                sizes='(min-width: 640px) 375px, (min-width: 768px) 800px'
+                widths={[375, 800]}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class='py-20 lg:py-44 bg-gray-100 px-2' id='testimonials'>
+        <div class='container mx-auto'>
+          <h4 class='text-blue-500 text-xl'>Phản hồi</h4>
+          <h3 class='text-6xl font-semibold'>
+            Khách hàng nói gì <br />về chúng tôi
+          </h3>
+
+          <div class='grid md:grid-cols-3 grid-cols-1 lg:gap-12 gap-6 mt-16'>
+            {
+              testimonials.map(({ name, review, rating }) => (
+                <div class='col-span-1 bg-white lg:px-16 px-6 lg:py-12 py-8 text-center rounded-lg'>
+                  <div class='flex items-center justify-center mb-3'>
+                    {Array.from({ length: rating }).map(() => (
+                      <svg
+                        class='w-5 fill-green-500'
+                        fill='currentColor'
+                        viewBox='0 0 20 20'
+                        xmlns='http://www.w3.org/2000/svg'
+                        aria-hidden='true'
+                      >
+                        <path
+                          clip-rule='evenodd'
+                          fill-rule='evenodd'
+                          d='M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z'
+                        />
+                      </svg>
+                    ))}
+                  </div>
+                  <p>{review}</p>
+                  <p class='text-bold uppercase mt-4 font-bold'>{name}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <ul class='w-full flex flex-wrap bg-blue-300' id='galery'>
+          {
+            galery.map(({ src, alt }) => (
+              <li class='w-1/2 lg:w-1/4 overflow-hidden'>
+                <figure>
+                  <Picture
+                    src={src}
+                    class='h-72 md:h-128 object-cover opacity-70 scale-110 hover:scale-100 hover:opacity-100 transition-all ease-out duration-500'
+                    alt={alt}
+                    format={'webp'}
+                    sizes='(min-width: 640px) 375px, (min-width: 768px) 700px'
+                    widths={[375, 700]}
+                  />
+                </figure>
+              </li>
             ))
           }
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <ul class='w-full flex flex-wrap bg-blue-300' id='galery'>
-        {
-          galery.map(({ src, alt }) => (
-            <li class='w-1/2 lg:w-1/4 overflow-hidden'>
-              <figure>
-                <Image
-                  src={src}
-                  class='h-72 md:h-128 object-cover opacity-70 scale-110 hover:scale-100 hover:opacity-100 transition-all ease-out duration-500'
-                  alt={alt}
-                  format={'webp'}
-                  width={700}
-                />
-              </figure>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
+        </ul>
+      </section>
+    </main>
 
     <footer class='bg-blue-500 text-white py-10 text-center'>
       <div class='container mx-auto'>
