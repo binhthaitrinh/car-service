@@ -14,6 +14,7 @@ import logo from '../images/logo.png';
 import phoneLogo from '../images/phone.png';
 import zaloLogo from '../images/zalo.png';
 import { Image, Picture } from '@astrojs/image/components';
+import { SEO } from 'astro-seo';
 
 const navLinks = [
   {
@@ -101,6 +102,17 @@ const zalo = '0398428829';
     <meta name='viewport' content='width=device-width' />
     <meta name='generator' content={Astro.generator} />
     <title>Vận tải Gia Huy</title>
+    <SEO
+      description='Nhận dịch vụ xe ghép - xe tiện chuyến Hà Nội - Hải Phòng - Quảng Ninh tại vận tải Gia Huy. Đảm bảo dịch vụ nhanh chóng, an toàn và tiện lợi. Đặt xe dễ dàng, đội ngũ tài xế thân thiện và kinh nghiệm. Hãy đặt xe với chúng tôi!'
+      openGraph={{
+        basic: {
+          title: 'Vận tải Gia Huy',
+          type: 'website',
+          image: 'https://vantaigiahuy.com/_astro/logo.d1aad768_ZTmsVM.webp',
+          url: 'https://vantaigiahuy.com/',
+        },
+      }}
+    />
   </head>
   <body class='text-gray-700'>
     <div
